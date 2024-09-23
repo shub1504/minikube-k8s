@@ -15,4 +15,84 @@ A Node is the fundamental worker machine in a Kubernetes cluster. It can be eith
 # PODS
 A Pod is the smallest and most basic deployable unit in Kubernetes (K8s). It represents a single instance of a running process in your cluster and can contain one or more containers that share the same network and storage resources. Typically, pods are used to run a single container, but there are cases where multiple containers need to work together closely, and in these cases, a pod will contain multiple tightly coupled containers.
 
+
+# Kubernetes Architecture 
+A Kubernetes environment consists of a control plane (master), a distributed storage system for keeping the cluster state consistent (etcd), and a number of cluster nodes (Kubelets). 
+
+
 ![image alt](https://platform9.com/wp-content/uploads/2019/05/kubernetes-constructs-concepts-architecture.jpg)
+
+# About Minikube 
+Minikube is a lightweight tool that allows you to run a Kubernetes (K8s) cluster locally on your machine. It is designed for development and testing purposes. Minikube runs a single-node Kubernetes cluster inside a virtual machine (VM) on your local machine or directly in containers (on systems with containerization support). It provides the full Kubernetes functionality, allowing you to test and develop containerized applications without requiring a remote or cloud infrastructure.
+
+
+**SINGLE NODE CLUSTER**
+
+A single-node cluster in Kubernetes refers to a cluster where both the control plane (which manages the cluster) and the worker node (which runs applications) are on the same machine. It runs all the components of Kubernetes, including the API server, scheduler, and Kubelet, but on just one physical or virtual node.
+
+# How to install Minikube with Ubuntu
+1. **STEP 1:** Connect to the Server via PuTTY
+   * Open PuTTY
+   * Enter the Hostname or IP Address
+   * Click Open
+   * Login to the server by writing ubuntu
+     
+2. **STEP 2:** Install docker using the following command
+   
+           curl -sL https://github.com/ShubhamTatvamasi/docker-install/raw/master/docker-install.sh | bash
+
+3. **STEP 3:**  Add your local user to docker group so that your local user run docker commands without sudo.
+
+               sudo usermod -aG docker $USER
+
+4. **STEP 4:** Now enter the following command
+
+              $ newgrp docker
+
+5. **STEP 5:** Install the Kubernetes command-line tool, kubectl, via the Snap package management system
+
+               sudo snap install kubectl --classic
+
+               kubectl version --client
+
+6. **STEP 6:** Download and Install Minikube Binary
+
+                curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
+                sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+7. **STEP 7:** Verify minikube version by following command
+
+                minikube version
+
+8. **STEP 8:** Install Kubectl tool
+
+                curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+   
+9. **STEP 9:** Start Minikube Cluster
+    
+                minikube start --driver=docker
+
+10. **STEP 10:** Verify the status of your cluster
+
+                minikube status
+
+11. **STEP 11** Grant permissions
+
+                kubectl cluster-info
+
+                Kubectl config view
+
+                kubectl get nodes
+
+                kubectl get pods
+
+12. **STEP 12** start the Kubernetes dashboard run below command
+
+                minikube dashboard
+
+                kubectl proxy --address='0.0.0.0' --disable-filter=true &
+    
+14. **STEP 13** Use the following url on browser and use your public ip 
+
+               http://public_ip:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
