@@ -41,7 +41,7 @@ A single-node cluster in Kubernetes refers to a cluster where both the control p
    
            curl -sL https://github.com/ShubhamTatvamasi/docker-install/raw/master/docker-install.sh | bash
 
-[WhatsApp Image 2024-09-23 at 15 13 50_890bcc7a](https://github.com/user-attachments/assets/6a62086d-595f-4ea4-abae-109fdb571018)
+![WhatsApp Image 2024-09-23 at 15 13 50_890bcc7a](https://github.com/user-attachments/assets/6a62086d-595f-4ea4-abae-109fdb571018)
 
 
 4. **STEP 3:**  Add your local user to docker group so that your local user run docker commands without sudo.
